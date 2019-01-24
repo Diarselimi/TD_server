@@ -2,30 +2,15 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-
-/**
- * @ORM\Entity(repositoryClass="App\Repository\VirtualMachineRepository")
- */
 class VirtualMachine
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
     private $id;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Server", mappedBy="virtualMachine")
-     */
     private $servers;
 
     public function __construct()
     {
-        $this->servers = new ArrayCollection();
+        $this->servers = []; 
     }
 
     public function getId(): ?int
@@ -33,10 +18,7 @@ class VirtualMachine
         return $this->id;
     }
 
-    /**
-     * @return Collection|Server[]
-     */
-    public function getServers(): Collection
+    public function getServers()
     {
         return $this->servers;
     }
@@ -49,7 +31,7 @@ class VirtualMachine
 
     public function popServer()
     {
-        $this->removeServer($this->servers->last());
+        array_pop($this->servers);
         return $this;
     }
 

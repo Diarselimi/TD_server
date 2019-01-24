@@ -4,36 +4,16 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\ServerRepository")
- */
 class Server
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $cpu;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
+   
     private $ram;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
+    
     private $hdd;
-
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    
     private $createdAt;
 
     public function __construct($cpu, $ram, $hdd)
